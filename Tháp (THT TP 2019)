@@ -1,0 +1,31 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    unsigned long long n;
+    cin >> n;
+    unsigned long long s = n*n;
+    if (n > 2) {
+        long long count = 1, index = 0, m = 1;
+        /*count để hỗ trợ biến m thiết lập nên số lượng phần tử của mỗi ô vuông hợp từ các ô đơn
+        index để thay đổi biến count vì sau mỗi lần đếm ô vuông số chẵn (2x2, 4x4,...) thì m lại giảm thêm 1 đơn vị, tức là count phải cộng thêm 1 đơn vị*/
+        for (long long i = 2; m >= 1; i++) { // i đóng vai trò là cấp của ô vuông, i = 2 tức là ô vuông 2x2 (ô vuông cấp 2); khi m >= 1 tức là số lượng ô vuông cấp i nhỏ nhất là 1 phần tử, tương ứng các cấp ô vuông lớn hơn sẽ = 0
+            if (index == 2) {
+                count++;
+                index = 0;
+            }
+            m = n - ++count;
+            if (i % 2 == 0) {
+                s = s + m*(m+1);
+                index++;
+            }
+            else {
+                s =  s + m*m;
+                index++;
+            } 
+        } 
+    }
+    cout << s;
+    return 0;
+}
