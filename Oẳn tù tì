@@ -1,0 +1,90 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+    char s[10][10];
+    strcpy(s[0], "KEO");
+    strcpy(s[1], "BUA");
+    strcpy(s[2], "BAO");
+    char s1[10][10];
+    for (int i = 0; i < 2; i++) {
+        cin >> s1[i];
+    }
+    int s1_giatri[2] = {};
+    int lens1 = 0;
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (strcmpi(s1[i], s[j]) == 0) {
+                s1_giatri[lens1++] = j;
+            }
+        }
+    }
+    int s2_giatri[2] = {};
+    int lens2 = 0;
+    char s2[10][10];
+    for (int i = 0; i < 2; i++) {
+        cin >> s2[i];
+    }
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (strcmpi(s2[i], s[j]) == 0) {
+                s2_giatri[lens2++] = j;
+            }
+        }
+    }
+    char traiphai[10][10];
+    for (int i = 0; i < 2; i++) {
+        cin >> traiphai[i];
+    }
+    if (strcmpi(traiphai[0], "TRAI") == 0) {
+        if (strcmpi(traiphai[1], "TRAI") == 0) {
+            if (s1_giatri[1] - s2_giatri[1] == 1 || s1_giatri[1] - s2_giatri[1] == -2) {
+                cout << "Nguoi 1 thang"; return 0;
+            }
+            if (s1_giatri[1] - s2_giatri[1] == 0) {
+                cout << "Hoa"; return 0;
+            }
+            else { 
+                cout << "Nguoi 2 thang"; return 0;
+            }
+        }
+        else {
+            if (s1_giatri[1] - s2_giatri[0] == 1 || s1_giatri[1] - s2_giatri[0] == -2) {
+                cout << "Nguoi 1 thang"; return 0;
+            }
+            if (s1_giatri[1] - s2_giatri[0] == 0) {
+                cout << "Hoa"; return 0;
+            }
+            else {
+                cout << "Nguoi 2 thang"; return 0;
+            }        
+        }
+    }
+    else {
+        if (strcmpi(traiphai[1], "TRAI") == 0) {
+            if (s1_giatri[0] - s2_giatri[1] == 1 || s1_giatri[0] - s2_giatri[1] == -2) {
+                cout << "Nguoi 1 thang"; return 0;
+            }
+            if (s1_giatri[0] - s2_giatri[1] == 0) {
+                cout << "Hoa"; return 0;
+            }
+            else {
+                cout << "Nguoi 2 thang"; return 0;
+            }
+        }
+        else {
+            if (s1_giatri[0] - s2_giatri[0] == 1 || s1_giatri[0] - s2_giatri[0] == -2) {
+                cout << "Nguoi 1 thang"; return 0;
+            }
+            if (s1_giatri[0] - s2_giatri[0] == 0) {
+                cout << "Hoa"; return 0;
+            }
+            else {
+                cout << "Nguoi 2 thang"; return 0;
+            }        
+        }
+    }
+    return 0;
+}
